@@ -2,14 +2,17 @@ var app = angular.module('patronApp', []);
 
 app.controller('MainController', function($scope, $http){
   $scope.showError = false;
+  $scope.people=[];
+  $scope.patronuses = [];
   $http.get('/people').then(handlePeopleSuccess, handleFailure);
   $http.get('/patronuses').then(handlePatronSuccess, handleFailure);
   function handlePeopleSuccess(response) {
-    $scope.people = response.data;
+    $scope.people = response.data.rows;
     console.log('Success', response);
+    console.log($scope.people);
   }
   function handlePatronSuccess(response) {
-    $scope.patronuses = response.data;
+    $scope.patronuses = response.data.rows;
     console.log('Success', response);
   }
   function handlePostPeople(response){
