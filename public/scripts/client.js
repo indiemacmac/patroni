@@ -17,11 +17,11 @@ app.controller('MainController', function($scope, $http){
     console.log('Failure', response);
   }
 
-  function() {
-
-  }
-
-  function submitAll() {
-
-  }
+  // function() {
+  //
+  // }
+  //
+  // function submitAll() {
+  //
+  // }
 })
