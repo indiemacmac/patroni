@@ -34,28 +34,30 @@ router.get('/personid', function(request, response){
 
 });
 
-add new partronus
-router.post('/', function(requeset, response){
-  var client = new pg.Client(config);
-client.connect(function(err) {
-    if (err) {
-        console.log("there was a problem connecting to the database", err);
+// add new partronus
+router.post('/', function(request, response){
+  var client= new pg.Client(config);
+  var name = request.body.patronus;
+  console.log(name);
+  client.connect(function(err){
+    if(err){
+      console.log(err);
     }
-    client.query("INSERT INTO patronuses ("patronus_name") VALUES('*********')", function(err, result) {
-        if (err) {
-            console.log("there was a problem in the patronus insert", err);
-        } else {
-            console.log("patronus insert success");
-            console.log(result.rows);
-            response.send(result.rows);
+    client.query('INSERT INTO patronuses (patronus_name) Values ($1)',[name], function(err){
+      if(err){
+        console.log(err);
+      }
+      else {
+        console.log('success');
+        response.sendStatus(200);
+      }
+      client.end(function(err){
+        if (err){
+          console.log('disconnect', err);
         }
-        client.end(function(err) {
-            if (err) {
-                console.log("There was a disconnection problem!")
-            }
-        });
-    });
-});
+      })
+    })
+  })
 });
 
 module.exports=router;

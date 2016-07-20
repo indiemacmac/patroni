@@ -12,16 +12,22 @@ app.controller('MainController', function($scope, $http){
     $scope.patronuses = response.data;
     console.log('Success', response);
   }
+  function handlePostPeople(response){
+    console.log('success', response)
+  }
 
   function handleFailure(response) {
     console.log('Failure', response);
   }
-
-  // function() {
-  //
-  // }
-  //
-  // function submitAll() {
-  //
-  // }
+  $scope.submitName = function(){
+    var sendData = {};
+    sendData.first_name = $scope.nameIn;
+    console.log(sendData);
+    $http.post('/people', sendData ).then(handlePostPeople,handleFailure);
+  }
+  $scope.submitPatron = function (){
+    var sendData = {};
+    sendData.patronus = $scope.patronIn;
+    $http.post('/patronuses', sendData).then(handlePostPeople, handleFailure);
+  }
 })

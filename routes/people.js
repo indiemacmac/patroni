@@ -8,6 +8,7 @@ var config={
 
 router.get('/', function(request,response){
   var client= new pg.Client(config);
+
   client.connect(function(err){
     if(err){
       console.log(err);
@@ -28,13 +29,15 @@ router.get('/', function(request,response){
     })
   })
 });
-router.post('/', function(requeset, response){
+router.post('/', function(request, response){
   var client= new pg.Client(config);
+  var name = request.body.first_name;
+  console.log(name);
   client.connect(function(err){
     if(err){
       console.log(err);
     }
-    client.query('INSERT INTO people(first_name, last_name)Values', function(err){
+    client.query('INSERT INTO people (first_name) Values ($1)',[name], function(err){
       if(err){
         console.log(err);
       }
