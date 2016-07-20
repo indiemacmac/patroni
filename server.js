@@ -1,13 +1,15 @@
 var express=require('express');
 var index=require('./routes/index');
 var people=require('./routes/people');
+var patronuses=require('./routes/patronuses');
 var app=express();
 
 //static files
 app.use(express.static('public'));
 //routes
 app.use('/', index);
-app.use('/people', people)
+app.use('/people', people);
+app.use('/patronuses', patronuses);
 
 var server=app.listen(3000, function(){
   var port=server.address().port;

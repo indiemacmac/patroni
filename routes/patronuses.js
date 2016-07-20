@@ -34,7 +34,7 @@ router.get('/personid', function(request, response){
 
 });
 
-//add new partronus
+add new partronus
 router.post('/', function(requeset, response){
   var client = new pg.Client(config);
 client.connect(function(err) {
