@@ -1,7 +1,8 @@
 var router=require('express').Router();
+var pg=require('pg');
 
 router.get('/', function(request,response){
-
+  
 });
 router.get('/personid', function(request, response){
 
