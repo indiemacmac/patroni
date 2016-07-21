@@ -33,7 +33,7 @@ angular.module('patronApp').factory('DataService', function($http){
   function getLastName(array){
     var lastname= "";
     for (var i=1; i<array.length; i++){
-      lastname+=array[i];
+      lastname+=" "+array[i];
     }
     return lastname;
   }
