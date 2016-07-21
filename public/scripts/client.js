@@ -2,7 +2,7 @@ var app = angular.module('patronApp', []);
 
 app.controller('MainController', function($scope, $http){
   $scope.showError = false;
-  $scope.people=[];
+  $scope.people = [];
   $scope.patronuses = [];
   getPeople();
   getPatronsues();
@@ -33,7 +33,7 @@ app.controller('MainController', function($scope, $http){
     var sendData = {};
     sendData.first_name = $scope.nameIn;
     console.log(sendData);
-    $http.post('/people', sendData ).then(handlePostPeople,handleFailure);
+    $http.post('/people', sendData).then(handlePostPeople,handleFailure);
   }
   $scope.submitPatron = function (){
     var sendData = {};

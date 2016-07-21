@@ -17,7 +17,7 @@ router.get('/', function(request, response){
               console.log("there was a problem in the patronus query", err);
           } else {
               console.log("patronus success");
-              console.log(result.rows);
+              // console.log(result.rows);
               response.send(result.rows);
           }
           client.end(function(err) {
@@ -37,8 +37,8 @@ router.get('/personid', function(request, response){
 // add new partronus
 router.post('/', function(request, response){
   var client= new pg.Client(config);
-  var name = request.body.patronus;
-  console.log(name);
+  var name = request.body.patronus_name;
+  // console.log(name);
   client.connect(function(err){
     if(err){
       console.log(err);

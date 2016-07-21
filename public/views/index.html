@@ -4,13 +4,28 @@
     <meta charset="utf-8">
     <title>Patroni</title>
     <script src="vendors/angular/angular.min.js"></script>
-    <script src="scripts/client.js" charset="utf-8"></script>
+    <script src="scripts/patronApp.module.js"></script>
+    <script src="scripts/DataService.js"></script>
+    <script src="scripts/mainController.js"></script>
   </head>
   <body ng-controller="MainController">
-    <input type="text" ng-model="nameIn"/>
+    <form id="newStuff">
+    <label for="namebut">Enter Names</label>
+    <input type="text" id="namebut" ng-model="nameIn"/>
     <button ng-click="submitName()">Submit!</button>
-    <input type="text" ng-model="patronIn" />
+  </br>
+    <label for="partonbut">Enter New Patronuses</label>
+    <input type="text" id="patronBut" ng-model="patronIn" />
     <button ng-click="submitPatron()">Submit!</button>
-{{3+3}}
+  </form>
+    <h3>People</h3>
+    <ul>
+      <li ng-repeat="person in data.people track by $index">{{data.people[$index].first_name}} {{data.people[$index].last_name}}</li>
+    </ul>
+    <h3>patronuses</h3>
+    <ul>
+      <li ng-repeat="patronus in data.patronuses track by $index">{{data.patronuses[$index].patronus_name}}</li>
+    </ul>
+    <button ng-click="getData()">get data</button>
   </body>
 </html>
